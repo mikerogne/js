@@ -33,18 +33,19 @@ function ShowDog(name, breed, weight, handler) {
     this.weight  = weight;
     this.handler = handler;
 }
-ShowDog.prototype        = new Dog(); // Inherit from Dog constructor
-ShowDog.prototype.league = "Webville";
-ShowDog.prototype.stack  = function () {
+ShowDog.prototype             = new Dog(); // Inherit from Dog constructor
+ShowDog.prototype.constructor = ShowDog; // Explicitly assign the constructor, otherwise it'll fall back to Dog.
+ShowDog.prototype.league      = "Webville";
+ShowDog.prototype.stack       = function () {
     console.log("Stack");
 };
-ShowDog.prototype.bait   = function () {
+ShowDog.prototype.bait        = function () {
     console.log("Bait");
 };
-ShowDog.prototype.gait   = function (kind) {
+ShowDog.prototype.gait        = function (kind) {
     console.log(kind + "ing");
 };
-ShowDog.prototype.groom  = function () {
+ShowDog.prototype.groom       = function () {
     console.log("Groom");
 };
 
