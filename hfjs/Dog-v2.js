@@ -19,9 +19,14 @@ Dog.prototype.wag     = function () {
 };
 
 // Dogs
-var fido   = new Dog('Fido', 'Mixed', 38);
-var fluffy = new Dog('Fluffy', 'Poodle', 30);
-var spot   = new Dog('Spot', 'Chihuahua', 10);
+var fido    = new Dog('Fido', 'Mixed', 38);
+var fluffy  = new Dog('Fluffy', 'Poodle', 30);
+var spot    = new Dog('Spot', 'Chihuahua', 10);
+var barnaby = new Dog('Barnaby', 'Basset Hound', 55);
+
+Dog.prototype.sit = function () {
+    console.log(this.name + " is now sitting!");
+};
 
 spot.bark = function () {
     console.log(this.name + " says WOOF!");
@@ -38,3 +43,5 @@ fluffy.wag();
 spot.bark();
 spot.run();
 spot.wag();
+
+barnaby.sit();
