@@ -28,29 +28,35 @@ Dog.prototype.sit     = function () {
 };
 
 function ShowDog(name, breed, weight, handler) {
-    this.name    = name;
-    this.breed   = breed;
-    this.weight  = weight;
+    Dog.call(this, name, breed, weight);
     this.handler = handler;
 }
-ShowDog.prototype        = new Dog(); // Inherit from Dog constructor
-ShowDog.prototype.league = "Webville";
-ShowDog.prototype.stack  = function () {
+ShowDog.prototype             = new Dog(); // Inherit from Dog constructor
+ShowDog.prototype.constructor = ShowDog; // Explicitly assign the constructor, otherwise it'll fall back to Dog.
+ShowDog.prototype.league      = "Webville";
+ShowDog.prototype.stack       = function () {
     console.log("Stack");
 };
-ShowDog.prototype.bait   = function () {
+ShowDog.prototype.bait        = function () {
     console.log("Bait");
 };
-ShowDog.prototype.gait   = function (kind) {
+ShowDog.prototype.gait        = function (kind) {
     console.log(kind + "ing");
 };
-ShowDog.prototype.groom  = function () {
+ShowDog.prototype.groom       = function () {
     console.log("Groom");
 };
 
-var scotty = new ShowDog('Scotty', 'Scottish Terrier', 15, 'Cookie');
+var fido     = new Dog('Fido', 'Mixed', 38);
+var fluffy   = new Dog('Fluffy', 'Poodle', 30);
+var spot     = new Dog('Spot', 'Chihuahua', 10);
+var scotty   = new ShowDog('Scotty', 'Scottish Terrier', 15, 'Cookie');
+var beatrice = new ShowDog('Beatrice', 'Pomeranian', 55, 'Hamilton');
 
-scotty.stack();
+fido.bark();
+fluffy.bark();
+spot.bark();
 scotty.bark();
-console.log(scotty.league);
-console.log(scotty.species);
+beatrice.bark();
+scotty.gait('Walk');
+beatrice.groom();
