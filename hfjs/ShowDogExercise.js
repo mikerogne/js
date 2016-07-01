@@ -28,9 +28,7 @@ Dog.prototype.sit     = function () {
 };
 
 function ShowDog(name, breed, weight, handler) {
-    this.name    = name;
-    this.breed   = breed;
-    this.weight  = weight;
+    Dog.call(this, name, breed, weight);
     this.handler = handler;
 }
 ShowDog.prototype             = new Dog(); // Inherit from Dog constructor
