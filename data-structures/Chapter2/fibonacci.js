@@ -7,6 +7,6 @@ for (var i = 3; i < 20; i++) {
     fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
 }
 
-fibonacci.forEach(function(el) {
-    console.log(el);
+fibonacci.forEach(function (value, index) {
+    console.log(value);
 });
