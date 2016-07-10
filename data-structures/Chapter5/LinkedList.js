@@ -40,7 +40,34 @@ function LinkedList() {
      * @param position
      * @param element
      */
-    this.insert = function (position, element) {};
+    this.insert = function (position, element) {
+        // Check for out-of-bounds values
+        if (position >= 0 && position <= length) {
+            var node    = new Node(element);
+            var current = head;
+            var previous;
+            var index   = 0;
+
+            if (position === 0) {
+                node.next = current;
+                head      = node;
+            } else {
+                while (index++ < position) {
+                    previous = current;
+                    current  = current.next;
+                }
+
+                node.next     = current;
+                previous.next = node;
+            }
+
+            length++;
+
+            return true;
+        } else {
+            return false;
+        }
+    };
 
     /**
      * Remove an item from a specified position in the list.
@@ -49,17 +76,17 @@ function LinkedList() {
      */
     this.removeAt = function (position) {
         // Check for out-of-bounds values
-        if(position > -1 && position < length) {
+        if (position > -1 && position < length) {
             var current = head;
             var previous;
-            var index = 0;
+            var index   = 0;
 
-            if(position === 0) {
+            if (position === 0) {
                 head = current.next;
             } else {
-                while(index++ < position) {
+                while (index++ < position) {
                     previous = current;
-                    current = current.next;
+                    current  = current.next;
                 }
 
                 // Link previous with current's next: skip it to remove.
