@@ -47,7 +47,32 @@ function LinkedList() {
      *
      * @param position
      */
-    this.removeAt = function (position) {};
+    this.removeAt = function (position) {
+        // Check for out-of-bounds values
+        if(position > -1 && position < length) {
+            var current = head;
+            var previous;
+            var index = 0;
+
+            if(position === 0) {
+                head = current.next;
+            } else {
+                while(index++ < position) {
+                    previous = current;
+                    current = current.next;
+                }
+
+                // Link previous with current's next: skip it to remove.
+                previous.next = current.next;
+            }
+
+            length--;
+
+            return current.element;
+        } else {
+            return null;
+        }
+    };
 
     /**
      * Remove an item from the list.
@@ -72,7 +97,9 @@ function LinkedList() {
     /**
      * Returns how many elements the linked list contains.
      */
-    this.size = function () {};
+    this.size = function () {
+        return length;
+    };
 
     this.toString = function () {};
 
