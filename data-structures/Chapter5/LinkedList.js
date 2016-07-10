@@ -106,20 +106,40 @@ function LinkedList() {
      *
      * @param element
      */
-    this.remove = function (element) {};
+    this.remove = function (element) {
+        var index = this.indexOf(element);
+
+        return this.removeAt(index);
+    };
 
     /**
      * Returns the index of the element in the list. If the element is not in the list, returns -1.
      *
      * @param element
      */
-    this.indexOf = function (element) {};
+    this.indexOf = function (element) {
+        var current = head;
+        var index   = 0;
+
+        while (current) {
+            if (element === current.element) {
+                return index;
+            }
+
+            index++;
+            current = current.next;
+        }
+
+        return -1;
+    };
 
     /**
      * Returns true if the linked list does not contain any elements and false if the size of the
      * linked list is bigger than 0.
      */
-    this.isEmpty = function () {};
+    this.isEmpty = function () {
+        return length === 0;
+    };
 
     /**
      * Returns how many elements the linked list contains.
@@ -128,7 +148,19 @@ function LinkedList() {
         return length;
     };
 
-    this.toString = function () {};
+    this.toString = function () {
+        var current  = head;
+        var elements = [];
 
-    this.print = function () {};
+        while (current) {
+            elements.push(current.element);
+            current = current.next;
+        }
+
+        return elements.join(",");
+    };
+
+    this.getHead = function () {
+        return head;
+    };
 }
