@@ -1,4 +1,4 @@
-function PriorityQueue() {
+module.exports = function () {
     var items = [];
 
     function QueueElement(element, priority) {
@@ -45,6 +45,6 @@ function PriorityQueue() {
     };
 
     this.print = function () {
-        console.log(items.toString());
+        console.log(items.map(function(el) { return el.element; }).join(","));
     }
-}
+};
