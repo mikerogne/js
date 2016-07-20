@@ -6,12 +6,17 @@ const fs       = require('fs'),
       server   = net.createServer(function (connection) {
           // Reporting
           console.log('Subscriber connected.');
-          connection.write(`Now watching '${filename}' for changes...\n`);
+          connection.write(JSON.stringify({
+                  type: 'watching', file: filename
+              }) + "\n");
 
           // Watcher setup
           let watcher = fs.watch(filename, function () {
-              let date = new Date();
-              connection.write(`File '${filename}' changed: ${date.toString()}\n`);
+              connection.write(JSON.stringify({
+                      type     : 'changed',
+                      file     : filename,
+                      timestamp: Date.now()
+                  }) + "\n");
           });
 
           // Cleanup
