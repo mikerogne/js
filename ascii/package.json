@@ -1,0 +1,15 @@
+{
+  "name": "ascii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mike Rogne <mikerogne@users.noreply.github.com> (https://github.com/mikerogne)",
+  "license": "ISC",
+  "dependencies": {
+    "figlet": "^1.1.2"
+  }
+}
